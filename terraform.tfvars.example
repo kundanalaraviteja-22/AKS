@@ -1,0 +1,63 @@
+# Terraform Variables File - Example Configuration
+# Copy this file to terraform.tfvars and customize for your environment
+
+# Resource Group Configuration
+resource_group_name = "rg-aks-prod"
+location            = "eastus"
+environment         = "prod"
+project_name        = "myapp"
+
+# AKS Cluster Configuration
+cluster_name            = "aks-myapp-prod"
+kubernetes_version      = "1.30"
+default_node_pool_name  = "default"
+
+# Node Pool Configuration
+node_count     = 3
+min_node_count = 1
+max_node_count = 5
+vm_size        = "Standard_D2s_v3"    # 2 vCPU, 8 GB RAM - suitable for production
+os_disk_size_gb = 128
+os_disk_type   = "Managed"
+
+# Network Configuration
+network_plugin = "azure"                           # Azure CNI provides better performance
+network_policy = "azure"                           # For network segmentation
+vnet_address_space = ["10.0.0.0/8"]
+subnet_address_prefix = ["10.1.0.0/16"]
+
+# Outbound configuration
+outbound_type = "loadBalancer"  # Options: loadBalancer, userDefinedRouting, managedNATGateway
+
+# API Server Security Configuration
+enable_api_server_authorized_ip_ranges = true
+api_server_authorized_ip_ranges = [
+  # "203.0.113.0/24",  # Your company network CIDR
+  # "198.51.100.0/24", # Your office network CIDR
+]
+
+# RBAC Configuration
+enable_rbac                    = true
+enable_pod_security_policy    = false  # Pod Security Policy is deprecated, use Pod Security Standards
+
+# Monitoring Configuration
+enable_log_analytics          = true
+log_analytics_workspace_sku   = "PerGB2018"
+
+# Container Registry Configuration
+enable_container_registry = true
+acr_sku                   = "Standard"  # Options: Basic, Standard, Premium
+
+# Common Tags
+tags = {
+  ManagedBy   = "Terraform"
+  CreatedDate = "2026-04-22"
+  CostCenter  = "IT"
+  Owner       = "DevOps Team"
+}
+
+# Additional AKS-specific tags
+aks_tags = {
+  Application = "Kubernetes"
+  ClusterType = "Production"
+}

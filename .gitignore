@@ -1,0 +1,53 @@
+# Terraform files
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+.terraform/
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Environment files
+terraform.tfvars
+terraform.tfvars.json
+.env
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfvars files are managed as part of configuration via VCS
+!example_override.tf
+
+# Ignore override files, as they are usually used to override resources locally
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Include override files you do wish to add to version control using negated pattern
+# !example_override.tf
+
+# Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
+*tfplan*
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+# Ignore kubeconfig files
+kubeconfig*
+.kube/
+
+# IDE files
+.idea/
+*.swp
+*.swo
+.vscode/
+*.code-workspace
+.DS_Store
+
+# Logs
+*.log
